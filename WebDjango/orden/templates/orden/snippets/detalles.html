@@ -1,0 +1,34 @@
+{% load funcion_tag %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Resumen de compra</h5>
+    </div>
+    <div>
+        <table class="table table-borderless table-sm">
+            <thead>   
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total a pagar:</td>
+                    <td>{{cart.total | precio_tag}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--<div> Subtotal calculate
+        <hr>
+        <div classs="text-danger">
+            Total:
+            <div class="d-inline-block">
+            {{cart.total | precio_tag}}
+            </div>
+        </div>
+    </div>-->
+    <div class="d-grid gap-2 mt-2">
+        <a class="btn btn-warning" href="{{next_url}}">Confirmar</a>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+[
+{
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+        "title": "Nike Nocta",
+        "description": "Estado: 10/10 \r\nTalla: L",
+        "price": 80000,
+        "created_at": "2021-10-20T15:07:30.227Z",
+        "images": "media/nikenocta1.jpg",
+        "slug": "nike-nocta"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+        "title": "Chaqueta Carhatt",
+        "description": "Estado 10/10\r\nTalla M",
+        "price": 40000,
+        "created_at": "2021-10-20T15:10:19.617Z",
+        "images": "media/carhatt.jpg",
+        "slug": "pantalon-carhatt"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 12,
+    "fields": {
+        "title": "Sweter Polo Bear",
+        "description": "Estado: 10/10\r\nTalla: L",
+        "price": 30000,
+        "created_at": "2021-10-20T15:11:05.497Z",
+        "images": "media/polobear.jpg",
+        "slug": "sweter-polo-bear"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 13,
+    "fields": {
+        "title": "Gorro Jordan",
+        "description": "Estado: 10/10\r\nTalla: M",
+        "price": 15000,
+        "created_at": "2021-10-20T15:12:17.528Z",
+        "images": "media/jordan_Sy4yg4i.jpg",
+        "slug": "gorro-jordan"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+        "title": "Bufanda Burberry",
+        "description": "Estado: 10/10\r\nTalla: L",
+        "price": 30000,
+        "created_at": "2021-10-20T15:13:09.326Z",
+        "images": "media/burberry.jpg",
+        "slug": "bufanda-burberry"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 15,
+    "fields": {
+        "title": "Chaqueta Adidas",
+        "description": "Estado: 10/10\r\nTalla: M",
+        "price": 50000,
+        "created_at": "2021-10-20T15:13:52.783Z",
+        "images": "media/adidasvintage.jpg",
+        "slug": "chaqueta-adidas"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 16,
+    "fields": {
+        "title": "Chaqueta Adidas",
+        "description": "Estado: 10/10\r\nTalla: M",
+        "price": 40000,
+        "created_at": "2021-10-20T15:14:22.097Z",
+        "images": "media/adidas2vintage.jpg",
+        "slug": "chaqueta-adidas-5ff6"
+    }
+}
+]
