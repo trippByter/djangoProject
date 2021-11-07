@@ -1,5 +1,8 @@
 from django.db import models
-from django.db.models.base import ModelState
+from django.db.models.base import ModelState #
+import string #para generar el codigo aleatoriamente
+import random #para generar el codigo aleatoriamente
+from django.db.models.signals import pre_save 
 
 # Create your models here.
 
@@ -14,4 +17,14 @@ class PromoCodigo(models.Model):
     def __str__(self):
         return self.codigo
 
-    
+#guardar un presave antes de que se genere un codigo promocional, crear un nuevo callback
+def set_codigo(sender, instance, *args, **kwargs):
+    #si existe un código, lo retornamos
+    if instance. codigo:
+        return 
+    #si no existe, usar "random y strings libs" para generar el codigo aleatoriamente
+    coders = string.ascii_uppercase + string.digits #ambos hacen una lista, junto con instance.codigo
+    instance.codigo = ''.join(random.choice(coders)for _ in range(5)) #el for es para saber la longitud de nuestro código
+    #el random choice elige aleatoriamente el string en el random de 5
+#antes de guardar, va a ejecutar el callback
+pre_save.connect(set_codigo, sender=PromoCodigo)
