@@ -20,7 +20,7 @@ class PromoCodigo(models.Model):
 #guardar un presave antes de que se genere un codigo promocional, crear un nuevo callback
 def set_codigo(sender, instance, *args, **kwargs):
     #si existe un código, lo retornamos
-    if instance. codigo:
+    if instance.codigo:
         return 
     #si no existe, usar "random y strings libs" para generar el codigo aleatoriamente
     coders = string.ascii_uppercase + string.digits #ambos hacen una lista, junto con instance.codigo
