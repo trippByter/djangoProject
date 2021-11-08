@@ -7,7 +7,6 @@ from DirEnvio.models import DireccionEnvio
 from .comun import OrdenStatus
 from .comun import choices
 import uuid
-import decimal
 
 # Create your models here.
 

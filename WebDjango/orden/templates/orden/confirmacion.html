@@ -40,8 +40,15 @@
                         Código de descuento
                     </div>
                     <form id="formPromo-codigo" action="{%url 'validar'%}">
-                        <input type="text" name="codigo" value="" class="form-control" placeholder="Código de descuento">
+                        <input type="text" name="codigo" value="" class="form-control" placeholder="Código de descuento" {%if orden.promo_codigo%}
+                        readonly{%endif%}>
                     </form>
+                    <div class="text-success" id="codigosuccess" style="font-size: 15px">
+                        <!--Aparece mensaje debajo del recuadro del codigo de descuento, una vez aplicado-->
+                        {%if orden.promo_codigo%}
+                        Código aplicado
+                        {%endif%}
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,13 +88,28 @@
         const codigo = input.value;
         // Concat url + código que ingresa el usuario: localh.../codigopromo/validar?code=1DKMK
         const url = this.action + '?code=' + codigo;
+        // Variable que obtiene el total desde detalles.html
+        const cont_total = document.getElementById('orden-total')
+        //esta variable contiene "Codigo aplicado"
+        const cont_success = document.getElementById('codigosuccess')
         console.log(url);
         // Se corrige indentado para que total arroje por consola el resultado del dcto. 
         fetch(url)
             .then(response => response.json())
             .then(response => {
-                console.log(response.total)
-        })
+                // Aqui mostramos el mensaje de codigo valido
+                if (response.status === true) {
+                    cont_total.innerHTML = "$" + response.total
+                    cont_success.classList.remove('text-danger') 
+                    cont_success.classList.add('text-success')
+                    cont_success.innerHTML = "Código aplicado"
+                }else{
+                    // Muestra mensaje si el código no es valido y cambia el color del msj.
+                    cont_success.innerHTML = "Codigo no válido"
+                    cont_success.classList.remove('text-success') //color verde
+                    cont_success.classList.add('text-danger') //color rojo
+                }
+            })
     })
 </script>
 {%endblock%}

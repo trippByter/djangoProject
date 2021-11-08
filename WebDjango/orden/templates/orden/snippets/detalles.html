@@ -14,7 +14,10 @@
             <tbody>
                 <tr>
                     <td>Total a pagar:</td>
-                    <td>{{cart.total | precio_tag}}</td>
+                    <!--Se identifica el total de la orden para luego mostrar por pantalla-->
+                    <div class="d-inline-block" id="orden-total">
+                        {{cart.total | precio_tag}}
+                    </div>
                 </tr>
             </tbody>
         </table>
