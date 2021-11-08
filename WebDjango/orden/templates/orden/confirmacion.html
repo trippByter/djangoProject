@@ -40,8 +40,8 @@
                         Código de descuento
                     </div>
                     <form id="formPromo-codigo" action="{%url 'validar'%}">
-                        <input type="text" name="codigo" value="" class="form-control" placeholder="Código de descuento" {%if orden.promo_codigo%}
-                        readonly{%endif%}>
+                        <!--                                   ||Aparece el cod prom como nombre-->
+                        <input type="text" name="codigo" value="{{orden.promo_codigo.codigo}}" class="form-control" placeholder="Código de descuento" {%if orden.promo_codigo.%}readonly{%endif%}>
                     </form>
                     <div class="text-success" id="codigosuccess" style="font-size: 15px">
                         <!--Aparece mensaje debajo del recuadro del codigo de descuento, una vez aplicado-->

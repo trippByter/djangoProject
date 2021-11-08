@@ -14,13 +14,12 @@ orden/templates/confirmacion.html
 # Usamos el carrito y la orden
 @validar_cart_and_orden
 def validar(request, cart, orden):
-    # Obtenemos el codigo del request
+    # Obtenemos el codigo del request mediante 'code'
     codigo = request.GET.get('code')
-    # Se invoca el objeto que se forma con 'codigo' que es PK en el model
-    promo_codigo = PromoCodigo.objects.filter(codigo=codigo).first() 
+    # Se invoca el objeto con la funcion get_validar que recibe como parametro el codigo 
+    promo_codigo = PromoCodigo.objects.get_validar(codigo) 
     # Si promo_codigo NO existe devuelve un 404 en un json
     if promo_codigo is None:
-        print('hola')
         return JsonResponse({
             'status' : False,
         },  status = 404)

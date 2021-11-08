@@ -24,7 +24,7 @@ class Orden(models.Model):
         return self.ordenID
     
     #aplicamos codigo de descuento con atributo 'promo_codigo'
-    def  aplicarCodigo(self, promo_codigo):
+    def aplicarCodigo(self, promo_codigo):
         #si el codigo no existe antes, se colocará el que se obtenga
         if self.promo_codigo is None:
             self.promo_codigo = promo_codigo
