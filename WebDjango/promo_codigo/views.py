@@ -20,9 +20,10 @@ def validar(request, cart, orden):
     promo_codigo = PromoCodigo.objects.filter(codigo=codigo).first() 
     # Si promo_codigo NO existe devuelve un 404 en un json
     if promo_codigo is None:
+        print('hola')
         return JsonResponse({
             'status' : False,
-        },   status = 404)
+        },  status = 404)
     # Si el promo código EXISTE,
     # Aplicar la orden. Tenemos el dcto como parametro.
     orden.aplicarCodigo(promo_codigo)

@@ -79,14 +79,14 @@
         e.preventDefault();
         const input = this.codigo;
         const codigo = input.value;
-        //concat url + código que ingresa el usuario: localh.../codigopromo/validar?code=1DKMK
+        // Concat url + código que ingresa el usuario: localh.../codigopromo/validar?code=1DKMK
         const url = this.action + '?code=' + codigo;
         console.log(url);
-
+        // Se corrige indentado para que total arroje por consola el resultado del dcto. 
         fetch(url)
-        .then(response => response.json())
-        .then(response => {
-            console.log(response.total)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response.total)
         })
     })
 </script>
