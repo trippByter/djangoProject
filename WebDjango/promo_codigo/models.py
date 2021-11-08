@@ -8,7 +8,7 @@ from django.db.models.signals import pre_save
 
 class PromoCodigo(models.Model):
     codigo = models.CharField(max_length=50, unique=True)
-    descuento = models.FloatField(default=0.0)
+    descuento = models.IntegerField(default=0)
     fecha_inicio = models.DateTimeField()
     fecha_final = models.DateTimeField()
     used = models.BooleanField(default=False)
@@ -16,15 +16,22 @@ class PromoCodigo(models.Model):
 
     def __str__(self):
         return self.codigo
+    
+    #funcion para cambiar el valor de 'used' a True y dejar el codigo como ya usado
+    def codigo_usado(self):
+        self.used = True #cambio en el atributo de la clase
+        self.save() #guardar los cambios
 
 #guardar un presave antes de que se genere un codigo promocional, crear un nuevo callback
 def set_codigo(sender, instance, *args, **kwargs):
     #si existe un código, lo retornamos
     if instance.codigo:
         return 
-    #si no existe, usar "random y strings libs" para generar el codigo aleatoriamente
-    coders = string.ascii_uppercase + string.digits #ambos hacen una lista, junto con instance.codigo
-    instance.codigo = ''.join(random.choice(coders)for _ in range(5)) #el for es para saber la longitud de nuestro código
-    #el random choice elige aleatoriamente el string en el random de 5
+    #si no existe, usar "random y strings libs" para generar el codigo aleatoriamente,
+    #ambos hacen una lista, junto con instance.codigo 
+    coders = string.ascii_uppercase + string.digits 
+    #el random choice elige aleatoriamente el string en el random de 5, el for es para saber la longitud del cod. prom.
+    instance.codigo = ''.join(random.choice(coders)for _ in range(5)) #
+    
 #antes de guardar, va a ejecutar el callback
 pre_save.connect(set_codigo, sender=PromoCodigo)
