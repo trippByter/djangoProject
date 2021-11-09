@@ -3,6 +3,7 @@
 {% url 'carts' as cart%}
 {% url 'direccion_envio' as direccion_envio%}
 {% url 'completado' as completados%}
+{% url 'crear' as crear%} 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'index' %}">
@@ -60,6 +61,14 @@
           <a class="nav-link" href="{%url 'completados'%}">
             <span class="fas fa-shipping-fast"></span>
             Mis órdenes
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'crear'%}">
+            <span class="fab fa-cc-stripe"></span>
+            Métodos de pago
           </a>
         </li>
       </ul>
