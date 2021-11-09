@@ -2,7 +2,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from orden.utils import funcionOrden
 from .models import DireccionEnvio
-from django.views.generic import ListView
+from django.views.generic import ListView # De esta clase se hereda para EnvioDirecciones
 from .forms import DireccionEnvioForm
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -21,13 +21,15 @@ class EnvioDirecciones(LoginRequiredMixin, ListView):
     login_url = 'login'
     model = DireccionEnvio
     template_name = 'direccion_envios/direccion_envio.html'
-
+    # Método para sobreescribir el queryset con la dir default. El default aparacerá primero
     def get_queryset(self):
         return DireccionEnvio.objects.filter(user=self.request.user).order_by('-default')
 
 
+# Función que renderiza un formulario que permite agregar nueva dirección
 @login_required(login_url='login')
 def FormularioDir(request):
+    # Instancia de DireccionEnvioForm de forms.py, para crear un nuevo formulario
     form = DireccionEnvioForm(request.POST or None) 
     if request.method == 'POST' and form.is_valid():
         direccion_envio = form.save(commit=False)
@@ -45,8 +47,9 @@ def FormularioDir(request):
 
         messages.success(request, 'Direccion creada correctamente')
         return redirect('direccion_envio')
-
+    # Return de FormularioDir. Renderiza a través de formulario.html
     return render(request, 'direccion_envios/formulario.html', {
+        # Contexto 'form' instanciado del model DireccionEnvioForm
         'form' : form,
     })
 

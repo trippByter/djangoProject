@@ -1,9 +1,11 @@
+<!--Página q muestra el formulario para agregar nueva direccion-->
 {%extends 'base.html'%}
 {%block content%}
 <div class="col">
     <div class="h3">
         Nueva Direccion
     </div>
+    <!--Funciones d iteracion heredadas de form.html, con el contexto form que se renderiza del views.py-->
     <div>
         {% include 'direccion_envios/snippets/form.html' with messages='Agregar' %}
     </div>

@@ -1,7 +1,8 @@
+<!---->
 <div class="mt-4">
     <form method="post">
         {% csrf_token %}
-        {%for field in form%}
+        {%for field in form%} <!--Itera sobre los elementos que recibe 'formulario.html' del views.py-->
         <div class="form-group">
             {{field.label_tag}}
             {{field}}

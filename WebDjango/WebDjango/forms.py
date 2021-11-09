@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from users.models import User
-
+# Formulario para registrar nuevos usuarios
+# Se agregan clases de bootstrap a través de dicc key value
 class Registro(forms.Form):
     username = forms.CharField(
         required=True, 

@@ -1,9 +1,12 @@
-from django.forms import ModelForm
+# Crear un nuevo formulario
+from django.forms import ModelForm # Heredamos de esta clase
 from .models import DireccionEnvio
 
 class DireccionEnvioForm(ModelForm):
     class Meta:
+        # Vamos a trabajar con el modelo DireccionEnvio
         model = DireccionEnvio
+        # Campos a solicitar en el formulario
         fields = [
             'line1', 'line2', 'city', 'state', 'postal_code', 'reference',
         ]
@@ -31,7 +34,7 @@ class DireccionEnvioForm(ModelForm):
         })
         self.fields['postal_code'].widget.attrs.update({
             'class' : 'form-control',
-            'placeholder' : '9876543',
+            'placeholder' : '+56 9 1234 5678',
         })
         self.fields['reference'].widget.attrs.update({
             'class' : 'form-control',
