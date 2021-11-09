@@ -30,12 +30,12 @@ class EnvioDirecciones(LoginRequiredMixin, ListView):
 @login_required(login_url='login')
 def FormularioDir(request):
     # Instancia de DireccionEnvioForm de forms.py, para crear un nuevo formulario
-    form = DireccionEnvioForm(request.POST or None) 
+    form = DireccionEnvioForm(request.POST or None) # Aseguramos que al peticion sea un metodo POST
     if request.method == 'POST' and form.is_valid():
-        direccion_envio = form.save(commit=False)
+        direccion_envio = form.save(commit=False) # Aqui se genera la instancia. No se guarda aun
         direccion_envio.user = request.user
-        direccion_envio.default = not request.user.has_direccion_envio()
-        direccion_envio.save()
+        direccion_envio.default = not request.user.has_direccion_envio() # Aqui la primera dir queda como default
+        direccion_envio.save() # Aqui se guarda la direccion
 
         if request.GET.get('next'):
             if request.GET['next'] == reverse('direccion'):
@@ -45,12 +45,11 @@ def FormularioDir(request):
 
                 return HttpResponseRedirect(request.GET['next'])
 
-        messages.success(request, 'Direccion creada correctamente')
-        return redirect('direccion_envio')
+        messages.success(request, 'Direccion creada correctamente') # Mensaje de creacion correcta
+        return redirect('direccion_envio') # Una vez ingresada la dir, se redirige a pagina con todas las direcciones
     # Return de FormularioDir. Renderiza a través de formulario.html
     return render(request, 'direccion_envios/formulario.html', {
-        # Contexto 'form' instanciado del model DireccionEnvioForm
-        'form' : form,
+        'form' : form, # Contexto 'form' instanciado del model DireccionEnvioForm
     })
 
 

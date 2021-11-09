@@ -4,13 +4,11 @@ from .models import DireccionEnvio
 
 class DireccionEnvioForm(ModelForm):
     class Meta:
-        # Vamos a trabajar con el modelo DireccionEnvio
-        model = DireccionEnvio
-        # Campos a solicitar en el formulario
-        fields = [
+        model = DireccionEnvio # Vamos a trabajar con el modelo DireccionEnvio
+        fields = [ # Campos a solicitar en el formulario
             'line1', 'line2', 'city', 'state', 'postal_code', 'reference',
         ]
-        labels = {
+        labels = { # Sobreescribir los campos en el formulario
             'line1': 'Calle 1',
             'line2': 'Calle 2',
             'city': 'Ciudad',
@@ -18,6 +16,7 @@ class DireccionEnvioForm(ModelForm):
             'postal_code': 'Codigo Postal',
             'reference': 'Referencia',
         }
+    # Sobreescribir la clase / agregar atributos
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['line1'].widget.attrs.update({
@@ -34,10 +33,10 @@ class DireccionEnvioForm(ModelForm):
         })
         self.fields['postal_code'].widget.attrs.update({
             'class' : 'form-control',
-            'placeholder' : '+56 9 1234 5678',
+            'placeholder' : '1100000',
         })
         self.fields['reference'].widget.attrs.update({
             'class' : 'form-control',
-            'placeholder' : '(Ejemplo: Portón Blanco)',
+            'placeholder' : '(Ejemplo: Al lado de la puerta blanca)',
         })
         
