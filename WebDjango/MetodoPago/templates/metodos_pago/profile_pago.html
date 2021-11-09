@@ -1,9 +1,31 @@
 <!--Se crea el html donde se el usuario empezará con el método de pago-->
 {%extends 'base.html'%}
+{%load static%}
 {%block content%}
 <div class="col">
     <div class="h3">
         Método de pago
     </div>
 </div>
+<div class="">
+    <form action="" method="post" id="payment-form">
+        <div class="form-group">
+            <div class="form-control form-control-payment" id="card-element">
+
+            </div>
+            <div id="card-erros" role="alert">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Tarjeta</button>
+    </form>
+</div>
+<!--Colocar la clave púlica de la API (dashboard STRIPE)-->
+<script>
+    var STRIPE_PUBLIC_KEY = "pk_test_51JtvQ0K5DDiUrkpu9nZjygrdC9NML5uqCVPY2CfqqglcGChLcnKyeRDYJVfNYtlrAIzK2XUmdz9yQ0KAeX3VP4im002QhSRHPX";
+    var CSRF_TOKEN = "{{ csrf_token }}";
+</script>
+<!--Se agrega funcion de flujo personalizado de pagina STRIPE-->
+<script src="https://js.stripe.com/v3/"></script>
+<!--Codigo js que copiamos del requerimientos.txt-->
+<script src="{% static 'js/index.js' %}"></script>
 {%endblock%}
