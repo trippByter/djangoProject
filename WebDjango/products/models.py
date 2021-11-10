@@ -11,7 +11,7 @@ class Product(models.Model):
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     images = models.ImageField(
-        upload_to='media/',
+        upload_to='media/', # Carpeta que contiene las imagenes de los productos
         null=False,
         blank=False,)
     slug = models.SlugField(

@@ -9,11 +9,12 @@ from .forms import Registro
 from users.models import User
 from products.models import Product
 from django.http import HttpResponseRedirect
-
+# Request contiene metadatos de la peticion de la página. En este caso index.html
 def index(request):
     productos = Product.objects.all()
-    return render(request, 'index.html', {
-        'mensaje' : 'Ingreso',
+    # Render recibe la peticion request||En el HTML devulve la rpta||El dicc es para el contexto que se muestran en el html
+    return render(request, 'index.html', { 
+        'mensaje' : 'Ingreso',  # Contexto que se envia al templates/index.html|{{mensaje}}
         'titulo' : 'Personas',
         'productos' : productos,
     })

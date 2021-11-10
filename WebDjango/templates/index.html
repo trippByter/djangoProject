@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="col">
-        <h1>{{mensaje}}</h1>
+        <h1>{{mensaje}}</h1> <!--Argumento del render de la def index en .views-->
         {% include 'products/snippets/search.html' %}
         <div class="row">
         {% include 'products/snippets/listP.html' %}
