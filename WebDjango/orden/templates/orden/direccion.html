@@ -8,13 +8,16 @@
     <div class="h3">
         Tu pedido esta en tránsito a destino
     </div>
-    {% include 'direccion_envios/snippets/cartDirecciones.html' %}
-    <div>    
-        <div class="mt-1">
-            <a class="btn btn-danger" href="{%url 'confirmacion'%}">Continuar</a>
+    <div>
+        
+    </div>
+    <div>
+        {% include 'direccion_envios/snippets/cartDirecciones.html' %}    
+        <div class="mt-2">
+            <a class="btn btn-danger" href="{% url 'confirmacion' %}">Continuar</a>
         </div>
         {%if contDireccion %}
-        <div class="">
+        <div class="mt-2">
             <a class="btn btn-primary" href="{%url 'select_direccion'%}">Lista de direcciones</a>
         </div>
         {%endif%}

@@ -7,7 +7,7 @@ from DirEnvio.models import DireccionEnvio
 from .comun import OrdenStatus
 from .comun import choices
 import uuid
-
+from enum import Enum
 # Create your models here.
 
 class Orden(models.Model):
@@ -17,7 +17,7 @@ class Orden(models.Model):
     status = models.CharField(max_length=40, choices=choices, default=OrdenStatus.CREATED)
     total = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    direccion_envio = models.ForeignKey(DireccionEnvio, null=True, blank=False, on_delete=models.CASCADE)
+    direccion_envio = models.ForeignKey(DireccionEnvio, null=True, blank=True, on_delete=models.CASCADE)
     promo_codigo = models.OneToOneField(PromoCodigo, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):

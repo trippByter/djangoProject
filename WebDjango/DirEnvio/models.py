@@ -25,5 +25,5 @@ class DireccionEnvio(models.Model):
         return self.orden_set.count() >= 1
 
     @property
-    def direccion(self):
+    def direccion(self): # Funcion que devuelve atributos 'line1, 'city' y 'state'
         return '{}, {}, {},'.format(self.line1, self.city, self.state,)

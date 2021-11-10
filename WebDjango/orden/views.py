@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import login
-from django.db.models.query import EmptyQuerySet
+#from django.db.models.query import EmptyQuerySet
 from django.shortcuts import get_object_or_404, redirect, render
 from carts.funciones import deleteCart, funcionCarrito
 from .models import Orden
@@ -10,7 +10,6 @@ from .utils import breadcrumb
 from DirEnvio.models import DireccionEnvio
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-#from django.db.models.query import EmptyQuerySet
 from .decorador import validar_cart_and_orden
 # Create your views here.
 class OrdenViews(LoginRequiredMixin, ListView):
@@ -50,8 +49,8 @@ def direccion(request, cart, orden):
 def select_direccion(request):
     direccion_envios = request.user.direccionenvio_set.all()
     return render(request, 'orden/select_direccion.html',{
-        'breadcrumb' : breadcrumb(address=True),
         'direccion_envios' : direccion_envios,
+        'breadcrumb' : breadcrumb(address=True),
     })
 
 
